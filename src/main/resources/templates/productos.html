@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento de Productos</title>
+    <link rel="stylesheet" href="/static/style2.css">
+</head>
+<body>
+    <div class="header">
+<button onclick="goToMainMenu()">Regresar al Menú Principal</button>
+<h1>Mantenimiento de Productos</h1>
+    </div>
+<!-- Formulario para insertar un nuevo producto -->
+<form id="productForm">
+    <label for="productName">Nombre del Producto:</label>
+    <input type="text" id="productName" required>
+    <label for="productPrice">Precio:</label>
+    <input type="number" id="productPrice" required>
+    <label for="productCant">Cantidad:</label>
+    <input type="number" id="productCant" required>
+    <button type="button" id="addButton" onclick="addProduct()">Agregar Producto</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad Disponible</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody id="productList">
+    </tbody>
+</table>
+
+<script src="/static/productos.js"></script>
+
+</body>
+</html>
