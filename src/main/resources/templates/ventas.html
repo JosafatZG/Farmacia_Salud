@@ -7,48 +7,44 @@
     <link rel="stylesheet" th:href="@{style2.css}">
 </head>
 <body>
-    <div class="header">
-        <form th:action="@{/inicio}">
-            <button type="submit">Regresar al Menú Principal</button>
-        </form>
+<div class="header">
+    <form th:action="@{/inicio}">
+        <button type="submit">Regresar al Menú Principal</button>
+    </form>
 
-<h1>Movimiento de Ventas</h1>
-    </div>
+    <h1>Movimiento de Ventas</h1>
+</div>
 <!-- Formulario para insertar un nuevo ventaso -->
-<form id="ventaForm">
-    <label for="ventaId">ID ventas:</label>
-    <input type="text" id="ventaId" required>
-    <label for="Fecha">Fecha:</label>
-    <input type="text" id="Fecha" required>
+<form id="ventaForm" th:action="@{/ventas}" th:object="${ventaAdd}" method="post">
+    <label for="producto">Producto:</label>
+    <select name="producto" id="producto" th:field="*{productoId}">
+        <option th:each="producto : ${productos}" th:value="${producto.getProductoId()}"
+                th:text="${producto.getNombre()}"></option>
+    </select>
     <label for="Cantidad">Cantidad:</label>
-    <input type="text" id="Cantidad" required>
-    <label for="ventasPriceshop">Precio Unitario:</label>
-    <input type="number" id="ventasPriceshop" required>
-    <label for="ventasPrice">Precio Total:</label>
-    <input type="number" id="ventasPrice" required>
-    <button type="button" id="addButton" onclick="addventas()">Agregar venta</button>
+    <input type="number" id="Cantidad" th:field="*{cantidad}" required>
+    <label for="Fecha">Fecha:</label>
+    <input type="date" id="Fecha" th:field="*{fecha}" required>
+    <button type="submit" id="addButton">Agregar venta</button>
 </form>
 <table>
     <thead>
     <tr>
-        <th>ID ventas</th>
-        <th>Fecha</th>
+        <th>ID Venta</th>
+        <th>Producto</th>
         <th>Cantidad</th>
-        <th>Precio Unitario</th>
-        <th>Precio Total</th>
+        <th>Fecha</th>
     </tr>
     </thead>
-    <tbody id="ventasList">
-        <tr th:each="ventaso : ${ventasos}">
-            <td th:text="${ventas.getventaId()}">ID ventas</td>
-            <td th:text="${ventas.getNombre()}">Nombre</td>
-            <td th:text="${ventas.getCantidad()}">Cantidad</td>
-            <td th:text="${ventas.getPrecioDeCompra()}">Precio Unitario</td>
-            <td th:text="${ventas.getPrecioDeVenta()}">Precio Total</td>
-        </tr>
+    <tbody id="productList">
+    <tr th:each="venta : ${ventas}">
+        <td th:text="${venta.getVentaId()}">ID Compra</td>
+        <td th:text="${venta.getProducto().getNombre()}">Producto</td>
+        <td th:text="${venta.getCantidad()}">Cantidad</td>
+        <td th:text="${#temporals.format(venta.getFecha(), 'dd/MM/yyyy')}">Fecha</td>
+    </tr>
     </tbody>
 </table>
-
 <script th:src="@{ventas.js}"></script>
 
 </body>

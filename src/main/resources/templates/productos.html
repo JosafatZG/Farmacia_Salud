@@ -15,20 +15,16 @@
 <h1>Mantenimiento de Productos</h1>
     </div>
 <!-- Formulario para insertar un nuevo producto -->
-<form id="productForm">
-    <label for="ProductoId">ID Producto:</label>
-    <input type="text" id="ProductoId" required>
+<form id="productForm" th:action="@{/productos}" th:object="${productoAdd}" method="post">
     <label for="productName">Nombre del Producto:</label>
-    <input type="text" id="productName" required>
-    <label for="Descripcion">Descripción:</label>
-    <input type="text" id="Descripcion" required>
-    <label for="productPriceshop">Precio de Compra:</label>
-    <input type="number" id="productPriceshop" required>
-    <label for="productPrice">Precio de Venta:</label>
-    <input type="number" id="productPrice" required>
-    <label for="productCant">Cantidad:</label>
-    <input type="number" id="productCant" required>
-    <button type="button" id="addButton" onclick="addProduct()">Agregar Producto</button>
+    <input type="text" id="productName" th:field="*{nombre}" required>
+    <label for="Descripcion" >Descripción:</label>
+    <input type="text" id="Descripcion" th:field="*{descripcion}" required>
+    <label for="productPriceshop" >Precio de Compra:</label>
+    <input type="number" step=".01" id="productPriceshop" th:field="*{precioDeCompra}" required>
+    <label for="productPrice" >Precio de Venta:</label>
+    <input type="number" step=".01" id="productPrice" th:field="*{precioDeVenta}" required>
+    <button type="submit" id="addButton">Agregar Producto</button>
 </form>
 <table>
     <thead>
@@ -39,6 +35,7 @@
         <th>Precio de compra</th>
         <th>Precio de venta</th>
         <th>Cantidad disponible</th>
+        <th>Acciones</th>
     </tr>
     </thead>
     <tbody id="productList">
@@ -49,6 +46,9 @@
             <td th:text="${producto.getPrecioDeCompra()}">Precio de compra</td>
             <td th:text="${producto.getPrecioDeVenta()}">Precio de venta</td>
             <td th:text="${producto.getStock()}">Cantidad disponible</td>
+            <td>
+                <a th:href="@{/productos/editar/{id}(id=${producto.getProductoId()})}">Editar</a>
+            </td>
         </tr>
     </tbody>
 </table>
