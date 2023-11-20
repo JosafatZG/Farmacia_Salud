@@ -18,7 +18,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String iniciarSesion(@ModelAttribute("user") User user) {
-        if (user.getUsername().equals("admin") && user.getPassword().equals("admin")) {
+        if (user.getUsername().equals("admin") && user.getPassword().equals("pass123")) {
             return "redirect:/inicio";
         }
         return "login";
