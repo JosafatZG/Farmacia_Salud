@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenimiento Compras</title>
+    <link rel="stylesheet" th:href="@{style2.css}">
 </head>
 <body>
+    <div class="header">
+        <form th:action="@{/inicio}">
+            <button type="submit">Regresar al Menú Principal</button>
+        </form>
+
+<h1>Mantenimiento Compras</h1>
+    </div>
+<!-- Formulario para insertar un nuevo Compra -->
+<form id="compraForm">
+    <label for="compraId">ID Compras:</label>
+    <input type="text" id="compraId" required>
+    <label for="Fecha">Fecha:</label>
+    <input type="text" id="Fecha" required>
+    <label for="Cantidad">Cantidad:</label>
+    <input type="text" id="Cantidad" required>
+    <label for="comprasPriceshop">Precio Unitario:</label>
+    <input type="number" id="comprasPriceshop" required>
+    <label for="comprasPrice">Precio Total:</label>
+    <input type="number" id="comprasPrice" required>
+    <button type="button" id="addButton" onclick="addcompras()">Agregar compra</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID Compra</th>
+        <th>Fecha</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Precio Total</th>
+    </tr>
+    </thead>
+    <tbody id="productList">
+        <tr th:each="Compra : ${Compras}">
+            <td th:text="${Compra.getCompraId()}">ID Compra</td>
+            <td th:text="${Compra.getFecha()}">Fecha</td>
+            <td th:text="${Compra.getCantidad()}">Cantidad</td>
+            <td th:text="${Compra.getPrecioDeCompra()}">Precio Unitario</td>
+            <td th:text="${Compra.getPrecioDecompra()}">Precio Total</td>
+        </tr>
+    </tbody>
+</table>
+
+<script th:src="@{compras.js}"></script>
 
 </body>
 </html>
