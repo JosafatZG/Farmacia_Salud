@@ -7,22 +7,22 @@
     <link rel="stylesheet" th:href="@{style2.css}">
 </head>
 <body>
-    <div class="header">
-        <form th:action="@{/inicio}">
-            <button type="submit">Regresar al Menú Principal</button>
-        </form>
+<div class="header">
+    <form th:action="@{/inicio}">
+        <button type="submit">Regresar al Menú Principal</button>
+    </form>
 
-<h1>Mantenimiento de Productos</h1>
-    </div>
+    <h1>Mantenimiento de Productos</h1>
+</div>
 <!-- Formulario para insertar un nuevo producto -->
 <form id="productForm" th:action="@{/productos}" th:object="${productoAdd}" method="post">
     <label for="productName">Nombre del Producto:</label>
     <input type="text" id="productName" th:field="*{nombre}" required>
-    <label for="Descripcion" >Descripción:</label>
+    <label for="Descripcion">Descripción:</label>
     <input type="text" id="Descripcion" th:field="*{descripcion}" required>
-    <label for="productPriceshop" >Precio de Compra:</label>
+    <label for="productPriceshop">Precio de Compra:</label>
     <input type="number" step=".01" id="productPriceshop" th:field="*{precioDeCompra}" required>
-    <label for="productPrice" >Precio de Venta:</label>
+    <label for="productPrice">Precio de Venta:</label>
     <input type="number" step=".01" id="productPrice" th:field="*{precioDeVenta}" required>
     <button type="submit" id="addButton">Agregar Producto</button>
 </form>
@@ -39,21 +39,18 @@
     </tr>
     </thead>
     <tbody id="productList">
-        <tr th:each="producto : ${productos}">
-            <td th:text="${producto.getProductoId()}">ID Producto</td>
-            <td th:text="${producto.getNombre()}">Nombre</td>
-            <td th:text="${producto.getDescripcion()}">Descripción</td>
-            <td th:text="${producto.getPrecioDeCompra()}">Precio de compra</td>
-            <td th:text="${producto.getPrecioDeVenta()}">Precio de venta</td>
-            <td th:text="${producto.getStock()}">Cantidad disponible</td>
-            <td>
-                <a th:href="@{/productos/editar/{id}(id=${producto.getProductoId()})}">Editar</a>
-            </td>
-        </tr>
+    <tr th:each="producto : ${productos}">
+        <td th:text="${producto.getProductoId()}">ID Producto</td>
+        <td th:text="${producto.getNombre()}">Nombre</td>
+        <td th:text="${producto.getDescripcion()}">Descripción</td>
+        <td th:text="${producto.getPrecioDeCompra()}">Precio de compra</td>
+        <td th:text="${producto.getPrecioDeVenta()}">Precio de venta</td>
+        <td th:text="${producto.getStock()}">Cantidad disponible</td>
+        <td>
+            <a th:href="@{/productos/editar/{id}(id=${producto.getProductoId()})}">Editar</a>
+        </td>
+    </tr>
     </tbody>
 </table>
-
-<script th:src="@{productos.js}"></script>
-
 </body>
 </html>

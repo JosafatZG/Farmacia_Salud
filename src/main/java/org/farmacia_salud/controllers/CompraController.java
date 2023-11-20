@@ -1,6 +1,5 @@
 package org.farmacia_salud.controllers;
 
-import jakarta.validation.Valid;
 import org.farmacia_salud.models.dto.CompraDTO;
 import org.farmacia_salud.models.entity.Compra;
 import org.farmacia_salud.models.entity.Movimiento;
@@ -12,7 +11,6 @@ import org.farmacia_salud.models.services.interfaces.IProductoService;
 import org.farmacia_salud.models.services.interfaces.IProveedorService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;

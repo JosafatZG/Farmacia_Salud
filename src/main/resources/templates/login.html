@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Farmacia + Salud</title>
-  <link rel="stylesheet" th:href="@{styles.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia + Salud</title>
+    <link rel="stylesheet" th:href="@{styles.css}">
 </head>
 <body>
 
 <div id="login-container">
-  <h1 class="page-header">Farmacia + Salud</h1>
-  <div class="login-container">
-    <form id="login-form" th:action="@{/login}" th:object="${user}" method="post">
-      <label for="username">Nombre de usuario:</label>
-      <input type="text" id="username" name="username" th:field="*{username}" required>
+    <h1 class="page-header">Farmacia + Salud</h1>
+    <div class="login-container">
+        <form id="login-form" th:action="@{/login}" th:object="${user}" method="post">
+            <label for="username">Nombre de usuario:</label>
+            <input type="text" id="username" name="username" th:field="*{username}" required>
 
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" th:field="*{password}" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" th:field="*{password}" required>
 
-      <button type="submit" >Iniciar Sesión</button>
-    </form>
-  </div>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
 </div>
 
 <div id="menu-container" style="display:none;">
-  <h2>Bienvenido</h2>
-  <ul>
-    <li><a th:href="@{/inicio}">Inicio</a></li>
-  </ul>
+    <h2>Bienvenido</h2>
+    <ul>
+        <li><a th:href="@{/inicio}">Inicio</a></li>
+    </ul>
 </div>
 
 </body>

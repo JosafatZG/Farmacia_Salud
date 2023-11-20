@@ -28,7 +28,7 @@ public class VentaController {
     }
 
     @GetMapping("/ventas")
-    public String tablaVentas(Model model){
+    public String tablaVentas(Model model) {
         model.addAttribute("ventaAdd", new VentaDTO());
         model.addAttribute("productos", productoService.findAll());
         model.addAttribute("ventas", service.findAll());
@@ -36,13 +36,13 @@ public class VentaController {
     }
 
     @PostMapping("/ventas")
-    public String agregarVenta(@ModelAttribute("ventaAdd") VentaDTO ventaDTO){
+    public String agregarVenta(@ModelAttribute("ventaAdd") VentaDTO ventaDTO) {
         Venta venta = new Venta();
         Optional<Producto> productoOptional = productoService.findById(ventaDTO.getProductoId());
-        if (productoOptional.isPresent()){
+        if (productoOptional.isPresent()) {
             Producto producto = productoOptional.get();
             int newStock = producto.getStock() - ventaDTO.getCantidad();
-            if (newStock >= 0){
+            if (newStock >= 0) {
                 producto.setStock(newStock);
                 venta.setProducto(producto);
                 venta.setCantidad(ventaDTO.getCantidad() * -1);
@@ -50,7 +50,7 @@ public class VentaController {
 
                 Movimiento movimiento = new Movimiento();
                 movimiento.setProducto(producto);
-                movimiento.setCantidad(ventaDTO.getCantidad() * - 1);
+                movimiento.setCantidad(ventaDTO.getCantidad() * -1);
                 movimiento.setFecha(ventaDTO.getFecha());
                 movimiento.setTipoMovimiento("Venta");
 

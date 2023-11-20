@@ -17,14 +17,14 @@ public class ProveedorController {
     }
 
     @GetMapping("/proveedores")
-    public String tablaProveedores(Model model){
+    public String tablaProveedores(Model model) {
         model.addAttribute("proveedorAdd", new Proveedor());
         model.addAttribute("proveedores", service.findAll());
         return "proveedores";
     }
 
     @PostMapping("/proveedores")
-    public String agregarProveedor(@ModelAttribute("proveedorAdd")Proveedor proveedor){
+    public String agregarProveedor(@ModelAttribute("proveedorAdd") Proveedor proveedor) {
         service.save(proveedor);
         return "redirect:/proveedores";
     }

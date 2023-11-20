@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
     @GetMapping("/login")
-    public String mostrarLogin(Model model){
+    public String mostrarLogin(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "login";
     }
 
     @PostMapping("/login")
-    public String iniciarSesion(@ModelAttribute("user") User user){
-        if (user.getUsername().equals("admin") && user.getPassword().equals("admin")){
+    public String iniciarSesion(@ModelAttribute("user") User user) {
+        if (user.getUsername().equals("admin") && user.getPassword().equals("admin")) {
             return "redirect:/inicio";
         }
         return "login";
